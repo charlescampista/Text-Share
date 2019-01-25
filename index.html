@@ -282,17 +282,29 @@
               <p>numero caracteres: <span id="ncaracteres">0</span></p>
               <p>numero palavras: <span id="npalavras">0</span></p>
             </div>
-            <div class="col-md-12 usuarios align-middle text-center"><h2>Usuarios</h2></div>
+            <div class="col-md-12 usuarios align-middle text-center">
+              <h2>Usuarios</h2>
+              <ul id="usuarios-logados">
+                
+              </ul>
+            </div>
             <div class="col-md-12 perfil align-bottom text-center">
-              <div class="box-perfil align-middle img-fluid">
-                <h2 id="usuario-logado-nome">Sem Usuario Logado</h2>
-                <img class="contaner-fluid"  src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Cell_Phone_Forensics_%286648550331%29.jpg">
+                <div class="row">
+                  <div class="col-4">
+                    <img id="imagem-usuario" class="mx-auto dflex "  src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Cell_Phone_Forensics_%286648550331%29.jpg">
+                  </div>
+                  <div class="col-8">
+                    <h2 class="text-center align-middle" id="usuario-logado-nome">Sem Usuario Logado</h2>
+                    <p id="email-usuario">teste@testmail.com</p>
+                  </div>
+
+                </div>
                 <div class="col mx-auto dflex" style="padding-top: 20px;">
                   <button id="logout-btn" class="btn btn-danger">Log Out</button>
                 </div>
               </div>
             </div>
-          </div>
+        </div>
     </div>
 
       

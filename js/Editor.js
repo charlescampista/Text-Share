@@ -49,5 +49,7 @@ function Editor() {
 
   this.setarUsuario = function(usuario) {
     document.getElementById("usuario-logado-nome").innerHTML = usuario.nome;
+    document.getElementById("email-usuario").innerHTML = usuario.email;
+    document.getElementById("usuarios-logados").innerHTML = "<li>"+usuario.nome+"</li>";
   };
 }
