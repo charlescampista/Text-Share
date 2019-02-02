@@ -146,21 +146,34 @@ function FirebaseManager() {
           }
 
           isAtualizacaoPendente = true;
-          if((content == null) || (content == "")){
+          if (content == null || content == "") {
             nCaracteres = regex.contarCaracteres(content);
             nPalavras = regex.contarPalavras(content);
           } else {
             nCaracteres = "Processando...";
-            nPalavras = "Processando..."
+            nPalavras = "Processando...";
           }
           editor.setarValor(content);
-          editor.atualizarEstatisticas(nCaracteres,nPalavras);
+          editor.atualizarEstatisticas(nCaracteres, nPalavras);
           if ($mudarLinguagem.val() !== linguagem)
             $mudarLinguagem.val(linguagem).change();
           isAtualizacaoPendente = false;
           console.log("VALOR SETADO: " + content);
         }
       });
+    });
+  };
+
+  this.pegarUsuariosAtivos = function() {
+    dados = [];
+    reference = this.db.collection("users");
+    query = reference.where("logado", "==", true);
+    query.get().then(snapshot => {
+      snapshot.docs.forEach(doc => {
+        dados.push(doc.data());
+      })
+      console.log(dados);
+      
     });
   };
 }

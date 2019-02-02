@@ -96,3 +96,7 @@ $("#registrar").click(function() {
 $("#voltar-login").click(function() {
   voltarParaLogin();  
 });
+
+$("#btn-testar").click(function() {
+  firebaseManager.pegarUsuariosAtivos();  
+});
