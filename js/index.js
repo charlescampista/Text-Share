@@ -46,6 +46,7 @@ firebase.auth().onAuthStateChanged(function(user) {
   }
 });
 
+//Captura as Mudanças no Editor
 editor.aceEditor.on("change", function(e) {
   if (isAtualizacaoPendente) {
     return;
@@ -59,6 +60,7 @@ editor.aceEditor.on("change", function(e) {
   editor.atualizarEstatisticas();
 });
 
+//Captura As mudanças na Linguagem de Programação
 var $mudarLinguagem = $("#linguagem").change(function() {
   artigo1.update({
     linguagem: this.value
@@ -70,12 +72,14 @@ var $mudarLinguagem = $("#linguagem").change(function() {
   console.log("Linguagem: " + this.value);
 });
 
+//Captura a Mudança do tema
 $("#tema")
   .change(function() {
     editor.setarTema(this.value, TEMA_LOCAL_STORAGE);
   })
   .val(tema);
 
+  //Evento para registra conta
 $("#registrar-btn").click(function() {
   name = document.getElementById("registrar-name").value;
   email = document.getElementById("registrar-email").value;
@@ -83,24 +87,30 @@ $("#registrar-btn").click(function() {
   credencial.registrarConta(name, email, password, firebaseManager);
 });
 
+//Envento de Clique login
 $("#login-btn").click(function() {
   email = document.getElementById("login-email").value;
   password = document.getElementById("login-password").value;
   credencial.logar(email, password);
 });
 
+//Evento de Clique LogOut
 $("#logout-btn").click(function() {
   firebaseManager.deslogarUsuario(credencial);
 });
 
+//Vai Para  a Pagina de Registro
 $("#registrar").click(function() {
   irParaRegistrarUsuario();
 });
 
+//Volta Para pagina  de login
 $("#voltar-login").click(function() {
   voltarParaLogin();
 });
 
+
+//Botão para a realização de testes durante o desenvolvimento, será  removido depois
 $("#btn-testar").click(function() {
   firebaseManager.pegarUsuariosAtivos().then(dados => {
     console.log("Funciona");
