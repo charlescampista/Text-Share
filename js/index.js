@@ -98,5 +98,10 @@ $("#voltar-login").click(function() {
 });
 
 $("#btn-testar").click(function() {
-  firebaseManager.pegarUsuariosAtivos();  
+  firebaseManager.pegarUsuariosAtivos().then( (dados) => {
+    console.log("Funciona");
+    console.log(dados);
+    
+  });  
+  
 });

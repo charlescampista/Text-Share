@@ -118,6 +118,11 @@ function FirebaseManager() {
         }
         if (change.type === "modified") {
           if (usuario.logado) {
+            // this.pegarUsuariosAtivos().then((dados) => {
+            //   console.log("Funciona");
+            //   console.log(dados);
+            // });
+            
             editor.setarUsuario(usuario);
             tempAlert("Usuario " + usuario.nome + " Logado", 5000);
           } else {
@@ -164,16 +169,15 @@ function FirebaseManager() {
     });
   };
 
-  this.pegarUsuariosAtivos = function() {
-    dados = [];
-    reference = this.db.collection("users");
-    query = reference.where("logado", "==", true);
-    query.get().then(snapshot => {
-      snapshot.docs.forEach(doc => {
-        dados.push(doc.data());
-      })
-      console.log(dados);
-      
-    });
-  };
+  // this.pegarUsuariosAtivos = async function() {
+  //   dados = [];
+  //   reference = this.db.collection("users");
+  //   query = reference.where("logado", "==", true);
+  //   query.get().then(snapshot => {
+  //     snapshot.docs.forEach(doc => {
+  //       dados.push(doc.data());
+  //     });
+  //   });
+  //   return dados;
+  // };
 }
