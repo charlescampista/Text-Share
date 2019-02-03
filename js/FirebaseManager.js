@@ -118,11 +118,6 @@ function FirebaseManager() {
         }
         if (change.type === "modified") {
           if (usuario.logado) {
-            // this.pegarUsuariosAtivos().then((dados) => {
-            //   console.log("Funciona");
-            //   console.log(dados);
-            // });
-            
             editor.setarUsuario(usuario);
             tempAlert("Usuario " + usuario.nome + " Logado", 5000);
           } else {
@@ -167,6 +162,21 @@ function FirebaseManager() {
         }
       });
     });
+  };
+
+  this.pegarUsuarioPeloId = async function(uid) {
+    this.db
+      .collection("users")
+      .doc(uid)
+      .get()
+      .then(doc => {
+        if (doc.exists) {
+          console.log(doc.data());
+          data = doc.data();
+          document.getElementById("usuario-logado-nome").innerHTML = data.nome;
+          document.getElementById("email-usuario").innerHTML = data.email;
+        }
+      });
   };
 
   // this.pegarUsuariosAtivos = async function() {

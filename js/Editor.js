@@ -50,8 +50,8 @@ function Editor() {
   this.setarUsuario = function(usuario) {
     conteudo = document.getElementById("usuarios-logados").innerHTML;
     console.log("Resultado"+conteudo);
-    document.getElementById("usuario-logado-nome").innerHTML = usuario.nome;
-    document.getElementById("email-usuario").innerHTML += usuario.email;
+    //document.getElementById("usuario-logado-nome").innerHTML = usuario.nome;
+    //document.getElementById("email-usuario").innerHTML += usuario.email;
     document.getElementById("usuarios-logados").innerHTML = conteudo+" <li>"+usuario.nome+"</li>";
   };
 }

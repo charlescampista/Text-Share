@@ -33,6 +33,10 @@ firebase.auth().onAuthStateChanged(function(user) {
   if (user) {
     console.log("usuario logado");
     firebaseManager.logarUsuario(user.uid);
+    firebaseManager.pegarUsuarioPeloId(user.uid);
+    // document.getElementById("usuario-logado-nome").innerHTML = data.nome;
+    // document.getElementById("email-usuario").innerHTML = data.email;
+
     $("#credenciamento").fadeOut();
     $("#pagina").fadeIn();
   } else {
@@ -94,14 +98,12 @@ $("#registrar").click(function() {
 });
 
 $("#voltar-login").click(function() {
-  voltarParaLogin();  
+  voltarParaLogin();
 });
 
 $("#btn-testar").click(function() {
-  firebaseManager.pegarUsuariosAtivos().then( (dados) => {
+  firebaseManager.pegarUsuariosAtivos().then(dados => {
     console.log("Funciona");
     console.log(dados);
-    
-  });  
-  
+  });
 });
