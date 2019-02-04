@@ -5,6 +5,11 @@ function FirebaseManager() {
     this.db = firebase.firestore();
   };
 
+  this.pegarDB = function() {
+    database = firebase.firestore();
+    return database;
+  }
+
   this.pegarArtigo1 = function() {
     return this.db.collection("artigos").doc("artigo1");
   };
@@ -178,30 +183,4 @@ function FirebaseManager() {
         }
       });
   };
-
-  this.pegarArtigosExistentes = async function() {
-    dados = []
-    this.db
-    .collection("artigos")
-    .get()
-    .then(snapshot => {
-      snapshot.docs.forEach(doc => {
-        dados.push(doc.data());
-      });
-      console.log(dados);
-      return dados;
-    });
-  }
-
-  // this.pegarUsuariosAtivos = async function() {
-  //   dados = [];
-  //   reference = this.db.collection("users");
-  //   query = reference.where("logado", "==", true);
-  //   query.get().then(snapshot => {
-  //     snapshot.docs.forEach(doc => {
-  //       dados.push(doc.data());
-  //     });
-  //   });
-  //   return dados;
-  // };
 }

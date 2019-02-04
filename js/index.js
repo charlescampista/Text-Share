@@ -30,24 +30,27 @@ voltarParaLogin = function() {
   $("#signup").fadeOut();
 };
 
+//Preenche o select com os artigos exitentes
 popularArtigos = function(firebaseMagager) {
-    
-  firebaseMagager.pegarArtigosExistentes()
-  .then(dados => {
-    console.log(dados);
-    
-    for (element in dados) {
-      // var opt = document.createElement("option");
-      // opt.value = index;
-      // opt.innerHTML = element; // whatever property it has
-  
-      // // then append it to the select element
-      // newSelect.appendChild(opt);
-      // index++;
-    }
-  });
+    db = firebaseMagager.pegarDB();
+    db
+    .collection("artigos")
+    .get()
+    .then(snapshot => {
+      snapshot.docs.forEach(doc => {
+        if(typeof doc.data().nome !== 'undefined') {
+          console.log(doc.data().nome);
+          option = document.createElement("option");
+          option.value = doc.data().nome;
+          option.innerHTML = doc.data().nome;
+          select = document.getElementById("artigo");
+          select.appendChild(option);
+        }
+      });
+    });
   
 };
+popularArtigos(firebaseManager);
 
 //mudança de credenciais
 firebase.auth().onAuthStateChanged(function(user) {
