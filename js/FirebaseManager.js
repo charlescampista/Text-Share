@@ -179,6 +179,20 @@ function FirebaseManager() {
       });
   };
 
+  this.pegarArtigosExistentes = async function() {
+    dados = []
+    this.db
+    .collection("artigos")
+    .get()
+    .then(snapshot => {
+      snapshot.docs.forEach(doc => {
+        dados.push(doc.data());
+      });
+      console.log(dados);
+      return dados;
+    });
+  }
+
   // this.pegarUsuariosAtivos = async function() {
   //   dados = [];
   //   reference = this.db.collection("users");

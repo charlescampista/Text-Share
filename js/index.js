@@ -17,6 +17,8 @@ var isAtualizacaoPendente = false;
 firebaseManager.escutarEventosConteudo(uid, editor);
 firebaseManager.escutarEventosUsuario();
 
+
+
 //######################## - MANIPULAÇÃO DE EVENTOS - ################
 irParaRegistrarUsuario = function() {
   $("#signin").fadeOut();
@@ -26,6 +28,25 @@ irParaRegistrarUsuario = function() {
 voltarParaLogin = function() {
   $("#signin").fadeIn();
   $("#signup").fadeOut();
+};
+
+popularArtigos = function(firebaseMagager) {
+    
+  firebaseMagager.pegarArtigosExistentes()
+  .then(dados => {
+    console.log(dados);
+    
+    for (element in dados) {
+      // var opt = document.createElement("option");
+      // opt.value = index;
+      // opt.innerHTML = element; // whatever property it has
+  
+      // // then append it to the select element
+      // newSelect.appendChild(opt);
+      // index++;
+    }
+  });
+  
 };
 
 //mudança de credenciais
@@ -112,8 +133,11 @@ $("#voltar-login").click(function() {
 
 //Botão para a realização de testes durante o desenvolvimento, será  removido depois
 $("#btn-testar").click(function() {
-  firebaseManager.pegarUsuariosAtivos().then(dados => {
-    console.log("Funciona");
-    console.log(dados);
-  });
+  // firebaseManager.pegarUsuariosAtivos().then(dados => {
+  //   console.log("Funciona");
+  //   console.log(dados);
+  // });
+  popularArtigos(firebaseManager);
+  console.log("Teste");
+  
 });

@@ -28,11 +28,11 @@ function Editor() {
 
   this.pegarCursor = function() {
     return ace.edit(editor).selection.getCursor();
-  }
+  };
 
-  this.irParaLinha  = function(linha) {
+  this.irParaLinha = function(linha) {
     ace.edit.gotoLine(linha);
-  }
+  };
 
   this.setarValor = function(content) {
     this.aceEditor.setValue(content);
@@ -42,16 +42,19 @@ function Editor() {
     this.aceEditor.getValue();
   };
 
-  this.atualizarEstatisticas = function(numeroCaracteres,numeroPalavras) {
+  this.atualizarEstatisticas = function(numeroCaracteres, numeroPalavras) {
     document.getElementById("ncaracteres").innerHTML = numeroCaracteres;
     document.getElementById("npalavras").innerHTML = numeroPalavras;
   };
 
   this.setarUsuario = function(usuario) {
     conteudo = document.getElementById("usuarios-logados").innerHTML;
-    console.log("Resultado"+conteudo);
+    console.log("Resultado" + conteudo);
     //document.getElementById("usuario-logado-nome").innerHTML = usuario.nome;
     //document.getElementById("email-usuario").innerHTML += usuario.email;
-    document.getElementById("usuarios-logados").innerHTML = conteudo+" <li>"+usuario.nome+"</li>";
+    document.getElementById("usuarios-logados").innerHTML =
+      conteudo + " <li>" + usuario.nome + "</li>";
   };
+
+  
 }
